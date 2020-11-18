@@ -23,6 +23,7 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.jwt = {sercet:"alex_kai"}
 
   config.sequelize = {
     dialect: 'mysql',
@@ -36,10 +37,18 @@ module.exports = appInfo => {
   defaultViewEngine:'nunjucks'
 }
 
+  config.cors={
+  origin:"*", //"*"代表所有的跨域请求
+  allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+}
+
   config.security = {
     csrf: {
       enable:false,
-    }
+    },
+    domainWhiteList: [
+      '*',
+  ], //配置白名单
   }
 
   return {
