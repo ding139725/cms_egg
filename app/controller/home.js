@@ -15,6 +15,12 @@ class HomeController extends Controller {
       await ctx.render('pe/index.html',data)
     }
   }
+  async test(){
+    this.ctx.body={
+      code:20000,
+      message:'测试成功'
+    }
+  }
 }
 
 module.exports = HomeController;
