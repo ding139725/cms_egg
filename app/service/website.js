@@ -4,9 +4,9 @@ const Service = require('egg').Service;
 
 class WebsiteService extends Service{
     async getHomePage(){
-        const msg = '首页页面'
+        const bookList = await this.app.model.Book.findAll();
         return {
-            msg
+            bookList
         }
     }
 }

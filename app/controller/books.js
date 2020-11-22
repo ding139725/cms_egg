@@ -31,6 +31,22 @@ class BookController extends Controller{
         }
     }
 
+    async destroy(){
+        let id = this.ctx.params.id;
+        let data = await this.ctx.service.books.deleteBook(id);
+        if(data){
+            this.ctx.body = {
+                code:20000,
+                message:true
+            }
+        }else{
+            this.ctx.body = {
+                code:40000,
+                message:false
+            }
+        }
+    }
+
     
 
 }

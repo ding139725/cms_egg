@@ -1,0 +1,14 @@
+@import '../common/meyer.css';
+
+.content{
+    width: 1260px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+aside{
+    width: 290px;
+    height: 400px;
+    background-color: #ffffff;
+    margin-left: 15px;
+}
