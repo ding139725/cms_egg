@@ -3,7 +3,6 @@ module.exports=app=>{
     const Video = app.model.define('video',{
         title:STRING,
         img:STRING,
-        iframe_url:STRING
     })
     return Video;
 }

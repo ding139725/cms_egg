@@ -11,14 +11,18 @@
     <div class="bcgfff">
         <header>
             <div class="header-left">
-                <a href="#" class="logo">
-                    <!-- <img src="/img/logo.png" alt="" class="logo"> -->
-                </a>
+                <div class="logo">
+                    <h1>
+                        <a href="/">
+                            晓舟科技
+                        </a>
+                    </h1>
+                </div>
                 <ul class="menu">
-                    <li><a href="#">首页</a></li>
-                    <li><a href="#">学习手册</a></li>
-                    <li><a href="#">技术博客</a></li>
-                    <li><a href="#">教学视频</a></li>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/book">学习手册</a></li>
+                    <li><a href="/blog">技术博客</a></li>
+                    <li><a href="/video">教学视频</a></li>
                     <li><a href="#">资源下载</a></li>
                 </ul>
             </div>
@@ -30,6 +34,10 @@
             </div>
         </header>
     </div>
-    {% block content %} {% endblock %}
+    {% block content %} {% endblock %} {% block js %} {% endblock %}
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+    </script>
 </body>
 </html>

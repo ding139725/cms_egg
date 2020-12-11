@@ -1,14 +1,94 @@
 @import '../common/meyer.css';
-
-.content{
-    width: 1260px;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
+.content {
+  width: 1260px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
 }
-aside{
-    width: 290px;
-    height: 400px;
-    background-color: #ffffff;
-    margin-left: 15px;
+aside {
+  width: 290px;
+  height: 400px;
+  background-color: #ffffff;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+aside .swiper {
+  width: 290px;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+}
+aside .swiper .img-list {
+  width: 870px;
+  height: 160px;
+  background-color: #0084ff;
+  display: flex;
+}
+aside .swiper .img-list img {
+  width: 290px;
+  height: 160px;
+}
+aside .swiper .swiper-index {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-57.5px);
+}
+aside .swiper .swiper-index ul {
+  width: 105px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+}
+aside .swiper .swiper-index ul li {
+  background-color: #666;
+  margin: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+aside .swiper .swiper-index ul .active {
+  background-color: #fff;
+  color: #fff;
+}
+aside .recommend-blog .recommend-title {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  color: #3d3d3d;
+  padding: 0 16px;
+  font-weight: 700;
+  line-height: 38px;
+  background: linear-gradient(#efefef, #ddd);
+  margin-top: 10px;
+}
+aside .recommend-blog .blog-list {
+  height: 160px;
+  overflow: hidden;
+  padding: 12px 16px 16px 16px;
+}
+aside .recommend-blog .blog-list ul li {
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #555666;
+  font-size: 14px;
+  line-height: 30px;
+}
+aside .recommend-blog .blog-list ul li a {
+  display: flex;
+  align-items: center;
+}
+aside .recommend-blog .blog-list ul li a img {
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  margin: 0 5px;
+}
+aside .recommend-blog .blog-list ul li a .num {
+  font-size: 12px;
+  color: #999aaa;
 }

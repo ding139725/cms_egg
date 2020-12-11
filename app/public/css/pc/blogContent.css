@@ -1,0 +1,35 @@
+@import 'fontCss.css';
+.content {
+  margin-top: 60px;
+}
+.content .title {
+  font-size: 36px;
+  font-weight: 600;
+}
+.content .data {
+  width: 955px;
+}
+.content .data .blogContent {
+  box-sizing: border-box;
+  padding: 10px 20px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+.content .data .blogContent .content-title {
+  font-size: 28px;
+  color: #222226;
+  font-weight: 600;
+  margin: 0;
+  word-break: break-all;
+  word-wrap: break-word;
+  padding-top: 9px;
+}
+.content .data .blogContent .content-time {
+  font-size: 14px;
+  margin: 30px 0;
+  color: #999aaa;
+}
+.content .data img {
+  width: 300px;
+  height: 200px;
+}

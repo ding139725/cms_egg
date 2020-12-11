@@ -13,4 +13,5 @@ module.exports = app => {
             as: 'chapter'
         })
     }
+    return Section;
 }

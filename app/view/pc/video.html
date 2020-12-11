@@ -1,0 +1,70 @@
+{% extends "./layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="/css/pc/index.css">
+<div class="content">
+    <div class="data">
+        {% for item in videoList %}
+        <div class="content-list">
+            <a href="/videoList/{{item.id}}">
+                <div class="img">
+                    <img src="{{item.img}}" alt="">
+                </div>
+                <div class="introduce">
+                    <h3 class="name">
+                        {{item.title}}
+                    </h3>
+                    <span class="time">
+                        {{item.createdAt}}
+                    </span>
+                    <button class="join">阅读</button>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- 侧边栏部分 -->
+    <aside class="aside">
+        <!-- 轮播图开始 -->
+        <div class="swiper">
+            <div class="img-list">
+                <img src="./img/1.jpg" alt="1">
+                <img src="./img/2.jpg" alt="1">
+                <img src="./img/3.jpg" alt="1">
+            </div>
+            <div class="swiper-index">
+                <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 轮播图结束 -->
+
+        <!-- 推荐博客开始 -->
+            <div class="recommend-blog">
+            <div class="recommend-title">
+                <h3>
+                推荐博客
+                </h3>
+            </div>
+            <div class="blog-list">
+                <ul>
+                {% for item in blogList %}
+                <li>
+                    <a href="/blogContent/{{item.id}}">
+                    {{ item.title }}
+                    <img src=".././img/readCountWhite.png" alt="">
+                    <span class="num">
+                        1024
+                    </span>
+                    </a>
+                </li>
+                {% endfor %}
+                </ul>
+            </div>
+            </div>
+        <!-- 推荐博客结束 -->
+    </aside>
+</div>
+{% endblock %}
