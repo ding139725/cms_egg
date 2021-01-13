@@ -49,6 +49,28 @@
                 </a>
             </div>
             {% endfor %}
+            <!-- 精品视频 -->
+            <h2 class="title">
+                精品博客
+            </h2>
+            {% for item in videoList %}
+            <div class="content-list">
+                <a href="/videoList/{{item.id}}">
+                    <div class="img">
+                        <img src="{{item.img}}" alt="">
+                    </div>
+                    <div class="introduce">
+                        <h3 class="name">
+                            {{item.title}}
+                        </h3>
+                        <span class="time">
+                            {{item.createdAt}}
+                        </span>
+                        <button class="join">阅读</button>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
         </div>
         <!-- 侧边栏部分 -->
         <aside class="aside">

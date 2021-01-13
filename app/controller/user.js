@@ -4,12 +4,12 @@ const Controller = require('egg').Controller;
 class UserController extends Controller {
   async login(){
       let loginForm = this.ctx.request.body;
-      const token = await this.ctx.service.user.login(loginForm.username,loginForm.password);
-      if(token){
+      const data = await this.ctx.service.user.login(loginForm.username,loginForm.password);
+      if(data){
           this.ctx.body =  {
               code:20000,
-              data:'登录成功',
-              token
+              data:data.user,
+              token:data.token
           }
       }else{
           this.ctx.body = {

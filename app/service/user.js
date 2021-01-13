@@ -5,12 +5,16 @@ const Service = require('egg').Service;
 class UserService extends Service{
 
     async login(username,password){
-        let isLogin = this.checkLogin(username,password);
+        let isLogin = await this.checkLogin(username,password);
         if(isLogin){
+            const user = await this.app.model.User.findOne({
+                where: {
+                    username
+                }
+            })
             const token = this.app.jwt.sign({username,password},this.app.config.jwt.secret)
             const decode = this.ctx.app.jwt.verify(token, this.ctx.app.config.jwt.secret);
-            console.log(decode);
-            return token
+            return { user,token }
         }else{
             return false;
         }
@@ -30,6 +34,8 @@ class UserService extends Service{
             }else{
                 return false;
             }
+        }else {
+            return false
         }
     }
 

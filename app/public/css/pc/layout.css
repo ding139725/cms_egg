@@ -24,6 +24,7 @@ body {
   display: flex;
 }
 .bcgfff header .header-left .logo {
+  display: inline-block;
   box-sizing: border-box;
   width: 115px;
   height: 0px;

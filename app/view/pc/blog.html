@@ -1,23 +1,20 @@
 {% extends "./layout.html" %}
 {% block content %}
-<link rel="stylesheet" href="/css/pc/index.css">
+<link rel="stylesheet" href="/css/pc/blog.css">
 <div class="content">
     <div class="data">
         <!-- 渲染博客列表 -->
         {% for item in blogList %}
         <div class="content-list">
             <a href="/blogContent/{{item.id}}">
-                <div class="img">
-                    <img src="{{item.img}}" alt="">
+                <div class="title">
+                    {{item.title}}
                 </div>
-                <div class="introduce">
-                    <h3 class="name">
-                        {{item.title}}
-                    </h3>
-                    <span class="time">
-                        {{item.createdAt}}
-                    </span>
-                    <button class="join">阅读</button>
+                <div class="blog-info">
+                    {{item.createdAt}}
+                </div>
+                <div class="blog-content">
+                    <!-- {{item.html_text | safe}} -->
                 </div>
             </a>
         </div>

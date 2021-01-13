@@ -7,9 +7,11 @@ class WebsiteService extends Service{
     async getHomePage(){
         const bookList = await this.app.model.Book.findAll();
         const blogList = await this.app.model.Blog.findAll();
+        const videoList = await this.app.model.Video.findAll();
         return {
             bookList,
-            blogList
+            blogList,
+            videoList
         }
     }
     // 手册
@@ -90,6 +92,28 @@ class WebsiteService extends Service{
         return {
             videoList,
             video
+        }
+    }
+    async getVideoContentPage (id) {
+        const video = await this.app.model.Videolist.findOne({
+            where:{
+                id
+            }
+        })
+        const videoList = await this.app.model.Videolist.findAll({
+            where:{
+                video_id:video.dataValues.video_id
+            }
+        })
+        return {
+            video,
+            videoList
+        }
+    }
+    async getResoursePage() {
+        const resourseList = await this.ctx.service.resourse.getResourseList();
+        return {
+            resourseList
         }
     }
 }

@@ -36,6 +36,7 @@ class HomeController extends Controller {
     const type = checkType(ctx.request.header["user-agent"]);
     // 获取首页的数据
     const data = await this.ctx.service.website.getBlogPage();
+    console.log(data.blogList)
     if(type){
       await ctx.render('pc/blog.html',data)
     }else{
@@ -107,10 +108,36 @@ class HomeController extends Controller {
       await ctx.render('pe/videoList.html',data)
     }
   }
+  async videoContent () {
+    const { ctx } = this;
+    // 判断请求的请求头类型
+    const type = checkType(ctx.request.header["user-agent"]);
+    let id = ctx.params.id
+    const data = await this.ctx.service.website.getVideoContentPage( id );
+    if(type){
+      await ctx.render('pc/videoContent.html',data)
+    }else{
+      await ctx.render('pe/videoContent.html',data)
+    }
+  }
+  async resourse () {
+    const { ctx } = this;
+    // 判断请求的请求头类型
+    const type = checkType(ctx.request.header["user-agent"]);
+    let id = ctx.params.id
+    const data = await this.ctx.service.website.getResoursePage();
+    if(type){
+      await ctx.render('pc/resourse.html',data)
+    }else{
+      await ctx.render('pe/resourse.html',data)
+    }    
+  }
   async test(){
+    let data = this.ctx.request.query
+    console.log(data)
     this.ctx.body={
       code:20000,
-      message:'测试成功'
+      message: data
     }
   }
 }
