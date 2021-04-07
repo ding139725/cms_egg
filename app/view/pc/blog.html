@@ -1,70 +1,19 @@
-{% extends "./layout.html" %}
+{% extends './layout.html' %}
+{% block title %} 
+<title>{{ blog.title }}</title>
+{% endblock %}
+{% set navActive = 'index' %}
 {% block content %}
 <link rel="stylesheet" href="/css/pc/blog.css">
-<div class="content">
-    <div class="data">
-        <!-- 渲染博客列表 -->
-        {% for item in blogList %}
-        <div class="content-list">
-            <a href="/blogContent/{{item.id}}">
-                <div class="title">
-                    {{item.title}}
-                </div>
-                <div class="blog-info">
-                    {{item.createdAt}}
-                </div>
-                <div class="blog-content">
-                    <!-- {{item.html_text | safe}} -->
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-        <!-- 渲染博客列表结束 -->
+<link rel="stylesheet" href="/css/pc/fontCss.css">
+<div class="main data">
+  <div class="blog-main bg-white">
+    <div class="blog-title">
+      {{ blog.title }}
     </div>
-    <!-- 侧边栏部分 -->
-    <aside class="aside">
-        <!-- 轮播图开始 -->
-        <div class="swiper">
-            <div class="img-list">
-                <img src="./img/1.jpg" alt="1">
-                <img src="./img/2.jpg" alt="1">
-                <img src="./img/3.jpg" alt="1">
-            </div>
-            <div class="swiper-index">
-                <ul>
-                <li class="active"></li>
-                <li></li>
-                <li></li>
-                </ul>
-            </div>
-        </div>
-        <!-- 轮播图结束 -->
-
-        <!-- 推荐博客开始 -->
-            <div class="recommend-blog">
-            <div class="recommend-title">
-                <h3>
-                推荐博客
-                </h3>
-            </div>
-            <div class="blog-list">
-                <ul>
-                {% for item in blogList %}
-                <li>
-                    <a href="/blogContent/{{item.id}}">
-                    {{ item.title }}
-                    <img src=".././img/readCountWhite.png" alt="">
-                    <span class="num">
-                        1024
-                    </span>
-                    </a>
-                </li>
-                {% endfor %}
-                </ul>
-            </div>
-            </div>
-        <!-- 推荐博客结束 -->
-    </aside>
-    <!-- 侧边栏结束 -->
+    <div class="blog-content">
+      {{ blog.html_text | safe }}
+    </div>
+  </div>
 </div>
 {% endblock %}

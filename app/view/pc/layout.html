@@ -1,43 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/pc/layout.css">
-    <link rel="stylesheet" href="/css/pc/common.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  {% block title %}{% endblock %}
+  <link rel="stylesheet" href="/css/pc/reset.css">
+  <link rel="stylesheet" href="/css/pc/common.css">
+  <link rel="stylesheet" href="/css/pc/layout.css">
+  <link rel="stylesheet" href="/font/iconfont.css">
 </head>
+
 <body>
-    <div class="bcgfff">
-        <header>
-            <div class="header-left">
-                <div>
-                    <h1>
-                        <a href="/" class="logo">
-                            晓舟科技
-                        </a>
-                    </h1>
-                </div>
-                <ul class="menu">
-                    <li><a href="/">首页</a></li>
-                    <li><a href="/book">学习手册</a></li>
-                    <li><a href="/blog">技术博客</a></li>
-                    <li><a href="/video">教学视频</a></li>
-                    <li><a href="/resourse">资源下载</a></li>
-                </ul>
-            </div>
-            <div class="header-right">
-                <input type="text" class="searchInput" placeholder="请输入">
-                <button class="login">
-                    登录
-                </button>
-            </div>
-        </header>
+  <header class="header bg-white">
+    <div class="navbar-container">
+      <div class="blog-title">
+        <h1><a href="/">大雄博客</a></h1>
+      </div>
+      <div class="navbar-menu">
+        <ul>
+          <li class="{{ 'active' if navActive == 'index' else '' }}">
+            <a href="/">
+              <i class="iconfont iconblog"></i>
+              个人博客
+            </a>
+          </li>
+          <li class="{{ 'active' if navActive == 'note' else '' }}">
+            <a href="/note">
+              <i class="iconfont iconnote"></i>
+              学习笔记
+            </a>
+          </li>
+          <li class="{{ 'active' if navActive == 'resourse' else '' }}">
+            <a href="/resourse">
+              <i class="iconfont iconziyuanshiyong"></i>
+              资源分享
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    {% block content %} {% endblock %} {% block js %} {% endblock %}
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script>
-    </script>
+  </header>
+  <div class="null-box">
+  </div>
+  <!-- 返回顶部的小火箭 -->
+  <div class="back-to-top">
+    <i class="iconfont iconhuojian"></i>
+  </div>
+  {% block content %} {% endblock %}
 </body>
+<script src="/js/jquery.js"></script>
+<script src="/js/fontsizeset.js"></script>
+<script>
+  function showBackToTop() {
+    let topRange = document.documentElement.scrollTop
+    if (topRange == 0) {
+      $('.back-to-top').animate({ bottom: '-100px' }, 50)
+    }
+    if (topRange > 100) {
+      $('.back-to-top').animate({ bottom: '100px' }, 200)
+    }
+  }
+  // 点击回到顶部
+  $('.back-to-top').click(function () {
+    $('html,body').animate({ scrollTop: '0px' }, 500)
+  })
+  //防抖debounce代码：
+  function debounce(fn, delay) {
+    var timeout = null; // 创建一个标记用来存放定时器的返回值
+    return function (e) {
+      // 每当用户输入的时候把前一个 setTimeout clear 掉
+      clearTimeout(timeout);
+      // 然后又创建一个新的 setTimeout, 这样就能保证interval 间隔内如果时间持续触发，就不会执行 fn 函数
+      timeout = setTimeout(() => {
+        fn.apply(this, arguments);
+      }, delay);
+    };
+  }
+  //滚动事件
+  window.addEventListener('scroll', debounce(showBackToTop, 200));
+</script>
+{% block jscontent %} {% endblock %}
+
 </html>

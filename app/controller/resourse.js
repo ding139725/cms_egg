@@ -1,84 +1,91 @@
 'use strict';
 
 const Controller = require('egg').Controller;
-
-class Resourse extends Controller{
-  async index () {
-    const data = await this.ctx.service.resourse.getResourseList()
-    if ( data ) {
+class HomeController extends Controller {
+  // 查询
+  async index() {
+    const { ctx } = this;
+    try {
+      const data = await ctx.service.resourse.selectResourse();
       this.ctx.body = {
         code:20000,
-        message:data
+        data
       }
-    } else {
+    } catch (error) {
       this.ctx.body = {
         code:40000,
-        message:false
+        error
       }
     }
   }
+  // 添加
   async create () {
-    let body = this.ctx.request.body
-    const data = await this.ctx.service.resourse.createResourse(body)
-    if ( data ) {
+    const { ctx } = this;
+    const resourse = ctx.request.body;
+    try {
+      const data = await ctx.service.resourse.createResourse(resourse)
       this.ctx.body = {
         code:20000,
-        message:true
+        data
       }
-    } else {
+    } catch (error) {
       this.ctx.body = {
         code:40000,
-        message:false
+        error
       }
     }
   }
-  async show () {
-    let id  = this.ctx.params.id
-    const data = await this.ctx.service.resourse.selectResourseById(id);
-    if ( data ) {
-      this.ctx.body = {
-        code:20000,
-        message:data
-      }
-    } else {
-      this.ctx.body = {
-        code:40000,
-        message:false
-      }
-    }
-  }
+  // 删除
   async destroy () {
-    let id = this.ctx.params.id;
-    const data = await this.ctx.service.resourse.deleteResourse(id);
-    if ( data ) {
+    try {
+      const id = this.ctx.params.id
+      console.log(id)
+      const data = await this.ctx.service.resourse.deleteResourse(id)
       this.ctx.body = {
         code:20000,
-        message:true
+        data
       }
-    } else {
+    } catch (error) {
       this.ctx.body = {
         code:40000,
-        message:false
+        error
       }
     }
   }
+  // 修改
   async update () {
-    let id = this.ctx.params.id;
-    let body = this.ctx.request.body;
-    console.log(id)
-    console.log(body)
-    const data = await this.ctx.service.resourse.updateResourse(id,body);
-    if ( data ) {
+    try {
+      const id = this.ctx.params.id
+      const resourse = this.ctx.request.body
+      const data = await this.ctx.service.resourse.updateResourse(id,resourse)
       this.ctx.body = {
         code:20000,
-        message:true
+        data
       }
-    } else {
+    } catch (error) {
       this.ctx.body = {
         code:40000,
-        message:false
+        error
+      }
+    }
+  }
+  // 查询一个
+  async show () {
+    try{
+      const id = this.ctx.params.id
+      const data = await this.ctx.service.resourse.selectResourseById(id)
+      console.log(id)
+      this.ctx.body = {
+        code: 20000,
+        data
+      }
+    }catch(error){
+      this.ctx.body = {
+        code: 40000,
+        error
       }
     }
   }
 }
-module.exports = Resourse
+
+module.exports = HomeController;

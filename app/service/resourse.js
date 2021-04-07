@@ -1,68 +1,53 @@
-'use strict';
+"use strict"
 
-const Service = require('egg').Service;
-
-class Resourse extends Service{
-
-  async getResourseList () {
-    try {
-      const data = await this.app.model.Resourse.findAll()
-      return data
-    } catch (error) {
-      return false
-    }
+const Service = require("egg").Service
+class Resourse extends Service {
+  async selectResourse() {
+    const resourseList = await this.app.model.Resourse.findAll()
+    return { resourseList }
   }
-  async createResourse ( body ) {
-    try {      
-      const resourse = {
-        code:body.code,
-        title:body.title,
-        url:body.url
-      }
-      await this.app.model.Resourse.create(resourse)
-      return true
-    } catch (error) {
-      return false
-    }
-  }
-  async deleteResourse ( id ) {
+  async deleteResourse(id) {
     try {
       await this.app.model.Resourse.destroy({
-        where:{
-          id
-        }
-      })
-      return true
-    } catch (error) {
-      return false
-    }
-  }
-  async selectResourseById ( id ) {
-    try {
-      const data = await this.app.model.Resourse.findOne({
         where: {
-          id
-        }
+          id,
+        },
       })
-      return data
+      return "删除成功"
     } catch (error) {
-      return false
+      return error
     }
   }
-  async updateResourse ( id,body ) {
+  async createResourse(resourse) {
     try {
-      await this.app.model.Resourse.update({
-        code:body.code,
-        title:body.title,
-        url:body.url
-      },{
-        where:{id}
-      })
-      return true
+      await this.app.model.Resourse.create(resourse)
+      return "添加成功"
     } catch (error) {
-      return false
+      return error
+    }
+  }
+  async updateResourse(id, resourse) {
+    try {
+      await this.app.model.Resourse.update(resourse, {
+        where: {
+          id,
+        },
+      })
+    } catch (error) {
+      return error
+    }
+  }
+  async selectResourseById(id) {
+    try {
+      const resourse = await this.app.model.Resourse.findOne({
+        where: {
+          id,
+        },
+      })
+      return resourse
+    } catch (error) {
+      return error
     }
   }
 }
-
 module.exports = Resourse

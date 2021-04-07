@@ -1,24 +1,32 @@
-.content {
-  margin-top: 60px;
+.blog-main {
+  margin-right: 10px;
+  min-width: 750px;
+  width: 750px;
+  padding: 20px;
 }
-.content .data {
-  width: 965px;
-  margin-top: 10px;
-}
-.content .data .content-list {
-  box-sizing: border-box;
-  padding: 20px 10px;
-  width: 100%;
-  height: 240px;
-  background-color: #fff;
-}
-.content .data .content-list a {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.content .data .content-list a .title {
-  font-size: 26px;
-  font-weight: 600;
+.blog-main .blog-title {
+  font-size: 30px;
   margin: 10px 0;
+}
+.blog-nav {
+  right: 170px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 0;
+}
+.blog-nav .blog-nav-box {
+  width: 200px;
+  position: fixed;
+}
+.blog-nav .blog-nav-box .blog-nav-title {
+  text-align: center;
+}
+.blog-nav a {
+  font-size: 14px;
+  color: #3c3c3c;
+  margin: 10px 0;
+}
+.blog-nav a:hover {
+  color: green;
 }

@@ -1,6 +1,5 @@
 module.exports=()=>{
     return async function(ctx,next){
-        console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         if(ctx.request.header['token']){
             let token = ctx.request.header['token'];
             const decode = ctx.app.jwt.verify(token, ctx.app.config.jwt.secret);

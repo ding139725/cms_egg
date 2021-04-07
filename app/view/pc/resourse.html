@@ -1,88 +1,27 @@
 {% extends './layout.html' %}
+{% block title %} 
+<title>大雄博客-资源分享</title>
+{% endblock %}
+{% set navActive = 'resourse' %}
 {% block content %}
 <link rel="stylesheet" href="/css/pc/resourse.css">
-<div class="content">
-  <div class="resourse-list">
-    <ul>
-      {% for item in resourseList %}
-      <li class="resourse-item">
-        <div class="item-left">
-          <h5 class="item-title">{{item.title}}</h5>
-          <h6 class="item-code">{{item.code}}</h6>
+<div class="main">
+  {% for item in resourseList %}
+    <div class="resourse-item">
+      <div class="item-left">
+        <h4 class="resourse-title">
+            {{item.title}}
+        </h4>
+        <div class="resourse-code">
+         提取码: {{item.code}}
         </div>
-        <div class="item-right">
-          <a href="{{item.url}}">立即提取</a>
-        </div>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <!-- 侧边栏部分 -->
-  <aside class="aside">
-    <!-- 轮播图开始 -->
-    <div class="swiper">
-      <div class="img-list">
-        <img src="./img/1.jpg" alt="1">
-        <img src="./img/2.jpg" alt="1">
-        <img src="./img/3.jpg" alt="1">
       </div>
-      <div class="swiper-index">
-        <ul>
-          <li class="active"></li>
-          <li></li>
-          <li></li>
-        </ul>
+      <div class="item-right">
+        <a href="{{item.url}}" target="blank">
+          立即提取
+        </a>
       </div>
     </div>
-    <!-- 轮播图结束 -->
-
-    <!-- 推荐博客开始 -->
-    <div class="recommend-blog">
-      <div class="recommend-title">
-        <h3>
-          推荐博客
-        </h3>
-      </div>
-      <div class="blog-list">
-        <ul>
-          {% for item in blogList %}
-          <li>
-            <a href="/blogContent/{{item.id}}">
-              {{ item.title }}
-              <img src=".././img/readCountWhite.png" alt="">
-              <span class="num">
-                1024
-              </span>
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-    <!-- 推荐博客结束 -->
-  </aside>
+  {% endfor%}
 </div>
-<script src="/js/jquery.js"></script>
-<script src="/js/swiper-bundle.min.js"></script>
-<script>
-    // 轮播图逻辑部分
-var index = 0
-$('li').click(function(){
-  index = $(this).index()
-  $(this).addClass('active')
-  $(this).siblings().removeClass('active')
-  $('.img-list').animate({marginLeft:`-${index * 290}px`},400,'linear')
-})
-var count = 0
-setInterval(function(){
-  index += 1
-  if(index==3){
-    index=0
-  }
-  const liList = $('.swiper-index li')
-  liList.eq(index).addClass('active')
-  liList.eq(index).siblings().removeClass('active')
-  $('.img-list').animate({marginLeft:`-${index * 290}px`},400,'linear')
-},3000)
-</script>
 {% endblock %}

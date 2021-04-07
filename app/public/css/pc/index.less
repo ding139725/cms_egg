@@ -1,63 +1,105 @@
-@import'../common/hclear.css';
-.content{
-    margin-top: 60px;
-    .data{
-        width: 955px;
-        .title{
-            width: 100%;
-            height: 50px;
-            padding-left: 23px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            font-size: 20px;
-            margin-top: 10px;
-        }
-        .content-list{
-            margin-top: 10px;
-            width: 100%;
-            height: 200px;
-            background-color: #fff;
-            a{
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                padding-left: 10px;
-                .img{
-                    width: 230px;
-                    height: 150px;
-                    background-color: red;
-                    margin-right: 25px;
-                    img{
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-                .introduce{
-                    font-size: 18px;
-                    height: 150px;
-                    display: flex;
-                    flex-direction: column;
-                    .name{
-                        margin-top: 20px;
-                    }
-                    .time{
-                        margin-top: 20px;
-                        font-size: 15px;
-                        color: #808080;
-                    }
-                    .join{
-                        width: 90px;
-                        height: 40px;
-                        background-color: #e3f0fc;
-                        border-radius: 5px;
-                        color: #0084ff;
-                        margin-top: 30px;
-                    }
-                }
-            }
-        }
+.banner {
+  width: 100%;
+  height: 5.208333rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #313131;
+  background: url('/images/back-img.svg') center center / cover no-repeat;
+  .title {
+    font-size: .520833rem;
+    margin-bottom: .416667rem;
+  }
+  .description {
+    font-size: .364583rem;
+  }
+}
+.blog-list-content {
+  flex: 9;
+  height: 0;
+  background-color: red;
+  .blog-item-box {
+    position: relative;
+    box-sizing: border-box;
+    padding: 16px 20px;
+    transition: all .3s;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,0.1);
+    margin: 0 auto 20px;
+    font-size: .208333rem;
+    .blog-title {
+      font-weight: bold;
+      font-size: .3125rem;
+      color: #242424;
+      transition: all .3s;
     }
+    .blog-title:hover {
+      color: #3eaf7c;
+    }
+    .blog-info {
+      color: #ccc;
+      margin: .15625rem 0;
+    }
+    .blog-synopsis {
+      color: #313131;
+      margin-bottom: .260417rem;
+      line-height: 1.5em;
+    }
+    .see-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #3eaf7c;
+      transition: all .3s;
+    }
+    .see-button:hover {
+      color: green;
+    }
+  }
+  .blog-item-box:hover {
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.2);
+  }
+}
+.my-info {
+  color: #242424;
+  flex: 3;
+  height: 4.6875rem;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 .208333rem;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.1);
+  font-size: .3125rem;
+  transition: all .3s;
+  .avatar-box {
+    width: 1.041667rem;
+    height: 1.041667rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    .avatar-photo {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .avatar-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    .blog-num {
+      margin-bottom: 10px;
+      font-size: .416667rem;
+    }
+    .blog-text{
+      font-size: .3125rem;
+    }
+  }
+}
+.my-info:hover {
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.2);
 }

@@ -8,13 +8,12 @@ class UserController extends Controller {
       if(data){
           this.ctx.body =  {
               code:20000,
-              data:data.user,
-              token:data.token
+              data
           }
       }else{
           this.ctx.body = {
               code:40000,
-              data:'登录失败'
+              data:'用户名或密码错误'
           }
       }
   }

@@ -1,0 +1,22 @@
+{% extends './layout.html' %}
+{% block title %} 
+<title>大雄博客-学习笔记</title>
+{% endblock %}
+{% set navActive = 'note' %}
+{% block content %}
+<link rel="stylesheet" href="/css/pc/note.css">
+<div class="note-main">
+  {% for item in noteList %}
+    <div class="note-item">
+      <h4 class="note-title">
+        <a href="/noteContent/{{item.id}}">
+          {{item.title}}
+        </a>
+      </h4>
+      <div class="info">
+        {{item.createdAt}}
+      </div>
+    </div>
+  {% endfor%}
+</div>
+{% endblock %}

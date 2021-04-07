@@ -7,14 +7,14 @@ class UserService extends Service{
     async login(username,password){
         let isLogin = await this.checkLogin(username,password);
         if(isLogin){
-            const user = await this.app.model.User.findOne({
+            let user = await this.app.model.User.findOne({
                 where: {
                     username
                 }
             })
             const token = this.app.jwt.sign({username,password},this.app.config.jwt.secret)
             const decode = this.ctx.app.jwt.verify(token, this.ctx.app.config.jwt.secret);
-            return { user,token }
+            return { user, token }
         }else{
             return false;
         }
@@ -27,8 +27,8 @@ class UserService extends Service{
             }
         })
         if(user){
-            let usr = user.dataValues.username
-            let pas = user.dataValues.password;
+            const usr = user.dataValues.username
+            const pas = user.dataValues.password;
             if(usr==username&&pas==password){
                 return true;
             }else{

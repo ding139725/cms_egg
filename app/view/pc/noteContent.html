@@ -1,0 +1,19 @@
+{% extends './layout.html' %}
+{% block title %} 
+<title>{{ note.title }}</title>
+{% endblock %}
+{% set navActive = 'note' %}
+{% block content %}
+<link rel="stylesheet" href="/css/pc/blog.css">
+<link rel="stylesheet" href="/css/pc/fontCss.css">
+<div class="main data">
+  <div class="blog-main bg-white">
+    <div class="blog-title">
+      {{ note.title }}
+    </div>
+    <div class="blog-content">
+      {{ note.html_text | safe }}
+    </div>
+  </div>
+</div>
+{% endblock %}
