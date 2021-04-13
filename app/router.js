@@ -11,6 +11,7 @@ module.exports = app => {
   router.get('/noteContent/:id', controller.home.noteContent);
   router.get('/resourse', controller.home.resourse);
   router.get('/admin/index', controller.home.admin)
+  router.get('*', controller.home.error)
   // 后台管理系统的接口
   router.post('/admin/login',controller.user.login)
   router.resources('/admin/blog','/admin/blog',controller.blog)

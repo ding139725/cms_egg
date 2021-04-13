@@ -1,33 +1,15 @@
-# demo
+# 大雄的个人博客
 
+### 技术选型
 
+框架：egg
 
-## QuickStart
+数据库：mysql
 
-<!-- add docs here for user -->
+登录：session（前端端分离适用 jwt）
 
-see [egg docs][egg] for more detail.
+前端页面：nunjucks 后端模板引擎
 
-### Development
+缓存数据库：redis
 
-```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
-```
-
-### Deploy
-
-```bash
-$ npm start
-$ npm stop
-```
-
-### npm scripts
-
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
-
-
-[egg]: https://eggjs.org
+单元测试：jest

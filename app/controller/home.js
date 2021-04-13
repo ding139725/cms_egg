@@ -2,6 +2,7 @@
 
 const Controller = require('egg').Controller;
 const checkType = require('../utils/checktype')
+const formattime = require('../utils/formattime')
 class HomeController extends Controller {
   // 首页
   async index() {
@@ -9,7 +10,8 @@ class HomeController extends Controller {
     // 判断请求的请求头类型
     const query = ctx.request.query
     const type = checkType(ctx.request.header["user-agent"]);
-    const data = await ctx.service.blog.selectBlog(query)
+    let data = await ctx.service.blog.selectBlog(query)
+    console.log(formattime(data.blogList))
     // 获取首页的数据
     if(type){
       await ctx.render('pc/index.html', data)
@@ -58,6 +60,9 @@ class HomeController extends Controller {
   }
   async admin() {
     await this.ctx.render('admin/index.html')
+  }
+  async error() {
+    await this.ctx.render('pc/404.html')
   }
 }
 

@@ -1,5 +1,5 @@
 {% extends './layout.html' %}
-{% block title %} 
+{% block title %}
 <title>大雄的个人博客</title>
 <meta name="description" content="大雄的前端学习之路">
 <meta name="keywords" content="前端、技术博客">
@@ -11,28 +11,35 @@
   <h1 class="title">学无止境</h1>
   <p class="description">书山有路勤为径，学海无涯苦作舟</p>
 </div>
-<div class="main">
-  <div class="blog-list-content">
-    <ul>
-      {% for item in blogList %}
-      <li class="blog-item-box bg-white">
-        <h3 class="blog-title">
-          <a href="/blog/{{item.id}}">
-            {{item.title}}  
+<div class="blog-main">
+  <div class="blog-container">
+    <div class="blog-list-content">
+      <ul>
+        {% for item in blogList %}
+        <li class="blog-item-box bg-white">
+          <h3 class="blog-title">
+            <a href="/blog/{{item.id}}">
+              {{item.title}}
+            </a>
+          </h3>
+          <div class="blog-info">
+            {{item.createdAt}}
+          </div>
+          <div class="blog-synopsis">
+            {{item.synopsis}}
+          </div>
+          <a class="see-button" href="/blog/{{item.id}}">
+            查看全文
           </a>
-        </h3>
-        <div class="blog-info">
-          {{item.createdAt}}
-        </div>
-        <div class="blog-synopsis">
-          {{item.synopsis}}
-        </div>
-        <a class="see-button" href="/blog/{{item.id}}">
-          查看全文
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="pagination">
+      <ul>
+        <li></li>
+      </ul>
+    </div>
   </div>
   <div class="my-info bg-white">
     <div class="avatar-box">
@@ -52,8 +59,11 @@
   </div>
 </div>
 {% endblock %}
-{% block jscontent %} 
+{% block jscontent %}
 <script>
+  $('.blog-num').click(function () {
+
+  })
 </script>
 
 {% endblock %}
